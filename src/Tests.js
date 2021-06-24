@@ -383,44 +383,16 @@ const newData = [
 export const InfiniteScrollDataTable = () => {
   const step = 10;
   //let controlData = undefined;
-  const coloredButton = {
-    button: {
-      border: {
-        color: 'red',
-      },
-      color:  'text-strong' ,
-      primary: {
-        color: 'red',
-      },
-      font: { family: 'Arial' },
-    },
-  };
-
-  const clickedButton = {
-    button: {
-      border: {
-        color: 'brand',
-      },
-      color:  'text-strong' ,
-      primary: {
-        color: 'brand',
-      },
-      font: { family: 'Arial' },
-    },
-  };
-
-
   const [icon, setIcon] = useState(null);
   const [label, setLabel] = useState("Load more");
   const [tableData, setNewData] = useState(DATA);
   const [color, setStyle] = useState('control');
-  // const [theme, setTheme] = useState(coloredButton);
 
   const load = () => {
     console.log(`InfiniteScroll fires onMore`);
     setTimeout(() => {
     setNewData([...tableData, ...newData]);
-    }, 3000);
+    }, 1000);
     
   };
 
@@ -440,9 +412,6 @@ export const InfiniteScrollDataTable = () => {
     setStyle('brand');
   };
 
-  // const changeButton = theme =>{
-  //   setTheme(clickedButton);
-  // };
 
   return (
     <Grommet theme={grommet}>
@@ -461,9 +430,7 @@ export const InfiniteScrollDataTable = () => {
           step={step}
           //onMore={storeLoad.Load}
         />
-        <Box align="center" pad="small">
-          <Button color={color} label= {label} icon={icon}  onClick={() => {getMoreData(label); loadIcon(icon); clickStyle(color)}}/>
-        </Box>
+        <Button color={color} label= {label} icon={icon}  onClick={() => {getMoreData(label); loadIcon(icon); clickStyle(color)}}/>
       </Box>
     </Grommet>
   );
